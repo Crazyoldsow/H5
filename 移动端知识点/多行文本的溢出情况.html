@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多行文本的溢出情况</title>
+<style>
+    .txt {
+        width:200px;
+        height:100px;
+        background:#99d;
+    }    
+    .txt p {
+        display: -webkit-box !important;
+        overflow:hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp:3;
+    }
+</style>
+</head>
+<body>
+    <div class="txt">
+        <p>
+            一壶茶，两个茶杯，便是我们给予彼此最后的饯别。茶叶在开水中舒展开来，就像当初的我们，因为遇见彼此不再孤独，在对方的陪伴下勇往直前，不再退缩。茶香随着升腾的水汽四处飘散，就像曾经不离不弃的我们，一直站在对方最近的地方，互相鼓励加油。
+        </p>
+    </div>
+</body>
+</html>

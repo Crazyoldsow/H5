@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection"content="telephone=no, email=no" />
+    <title>新建空白页面</title>
+<style type="text/css">
+    *{
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    html,body,.wrap-page{
+        height: 100%;
+    }
+    .wrap-page{
+        -webkit-overflow-scrolling:touch;
+        padding-top:44px;
+        padding-bottom: 44px;
+    }
+    .fixed-up{
+        position:fixed;
+        left:0;
+        right:0;
+        top:0;
+        z-index:960;
+        height:44px;
+        text-align: center;
+        font-family: "微软雅黑";
+        background-color:#ede;
+        line-height:44px;
+    }
+    .fixed-bottom{
+        position:fixed;
+        left: 0;
+        right:0;
+        height:44px;
+        bottom:0;
+        z-index: 940;
+        text-align:center;
+        font-family: "微软雅黑";
+        line-height:44px;
+        background-color:#ede;
+    }
+</style>
+</head>
+<body>
+    <header class="header fixed-up">Header</header>
+    <div class="wrap-page">
+        <section class="page">我是内容</section>
+        <section class="page">我是内容</section>
+    </div>
+    <footer class="footer fixed-bottom">Footer</footer>
+</body>
+</html>

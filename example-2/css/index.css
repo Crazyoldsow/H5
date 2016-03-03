@@ -1,0 +1,45 @@
+*{padding:0;margin:0;font-family: "微软雅黑"}
+em{font-style:normal;}
+li{list-style:none;}
+a {text-decoration:none;}
+
+.page {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 44px;
+  bottom: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+}
+.page-in {
+  -webkit-transition: -webkit-transform 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  -ms-transition: transform 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: transform 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.page-out {
+  -webkit-transition: -webkit-transform 400ms cubic-bezier(0.42, 0, 0.58, 1) 0.1s;
+  -ms-transition: transform 400ms cubic-bezier(0.42, 0, 0.58, 1) 0.1s;
+  transition: transform 400ms cubic-bezier(0.42, 0, 0.58, 1) 0.1s;
+}
+.page h1{
+    text-align: center
+}
+
+/*page在wrap的位置*/
+/*
+#page-1{
+    -webkit-transform:translate(0%);
+    transform:translate(0%) ;
+}
+*/
+#page-2{
+    -webkit-transform:translate(100%);
+    transform:translate(100%) ;
+}
+#page-3{
+    -webkit-transform:translate(200%);
+    transform:translate(200%) ;
+}

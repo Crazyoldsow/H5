@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单行文本的溢出情况</title>
+<style>
+    .txt{
+        width:100px;
+        height:50px;
+        background: #9dd;
+    }
+    .txt p{
+        overflow:hidden;
+        white-space:nowrap;
+        text-overflow: ellipsis;
+        line-height:50px;
+    }
+</style>
+</head>
+<body>
+    <div class="txt">
+        <p>这是一行文本显示不全后的溢出情况</p>
+    </div>
+</body>
+</html>
