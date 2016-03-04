@@ -83,7 +83,31 @@
     
 <font color = "red">安卓不支持此功能</font>
 
+##### 有关移动端的字体设置
+    1. 行宽
+        * 理想阅读的行宽是65个字符, 航款式产生的物理长度，与字体的大小设计间距等无关. 
+        * 移动端的行宽肯定没有办法达到这个值，这个目前没有普遍的一个标准，但是在传统上 报纸或者是每一个窄行都会趋于39个字符,
+    2. 宽松行距,紧凑行距
+        * 行之间的空白 太紧凑的话有时会看叉行，太宽的话会阻断视线流
+        * 行距的标准通常是1.4em ，但是一般来说有点紧凑
+    3. 最好的状态
+        * 最佳状态 --- 多数笔画通常都能排在像素网格中 --这样看起来会比较的好看
+        * 在移动设备上面需要使用X 的高度来代替[即小写字母x的高度]
+        * 大脑的识别是文字的顶部，而不是底部，所以要确保文字的顶部最契合像素
+    4. 移动端的起伏边
+        * 以中文为例，每一行的字数因为标点的问题也许不是很一致，然后就会产生起伏边这样子。
+        * 解决方法: 在文字里面加上text-align : justify;  [见移动端开发/右端对齐例子]
+        * 如何控制标点符号避免在首或者尾也就是每一行的第一个字，或者是最后一个字，做法是word-break:break-all;
+    5. 减少反差
+        * 桌面的标题跟正文字号差距为2-3 倍. 
+        * 多数设计师使用斐波那契数列的字号组合，在移动端应该缩小比例反差
+            * 比如你用黄金比例1.618 与字号相乘 在移动端就用 1.382 来代替
+    6. 调整字间距
+        * 一般情况下不支持使用这个方法
+        * 具体情况具体对待
+     
     
 * <font color = "#F87219" size = "2px"> 参考资料</font>
     * [http://www.html-js.com/article/Mobile-terminal-H5-mobile-terminal-HD-multi-screen-adaptation-scheme%203041](http://www.html-js.com/article/Mobile-terminal-H5-mobile-terminal-HD-multi-screen-adaptation-scheme%203041)
     * 慕课网移动webapp开发知识点
+    * [https://leohxj.gitbooks.io/front-end-database/content/user-interface/mobile-fonts.html](https://leohxj.gitbooks.io/front-end-database/content/user-interface/mobile-fonts.html)
