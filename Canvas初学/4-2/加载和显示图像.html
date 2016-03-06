@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xxx</title>
+    <script type="text/javascript" src="../modernizr-1.6.min.js"></script>
+    <script type="text/javascript">
+        /*
+            drawImage :
+                Imagedata positionX positionY width height
+        */
+        window.addEventListener('load', eventWindowLoaded, false);
+        function eventWindowLoaded() {
+            canvasApp();
+        }
+        //判断是否支持canvas
+        function canvasSupport() {
+            return Modernizr.canvas;
+        }
+        
+        //专门执行canvas的
+        function canvasApp() {
+            
+            //初始化
+            var message = "Your message";
+            var fillOrStroke = "fill";
+            
+            if(!canvasSupport()) {
+                return;
+            }else{
+                var theCanvas = document.getElementById("canvasOne");
+                var context = theCanvas.getContext('2d'); 
+            }
+                            
+            drawScreen();
+
+            function drawScreen() {
+                var smallCar = new Image();
+                
+                //图像加载完毕再显示
+                smallCar.addEventListener('load', eventCarLoaded, false);
+                smallCar.src = "../img/car.png";
+
+                function eventCarLoaded () {
+                    drawScreen();
+                }
+                function drawScreen() {
+                    context.drawImage(smallCar, 0,0);
+                    context.drawImage(smallCar,50,50);
+                }
+            }
+            
+
+//            drawScreen();
+//            function drawScreen() {
+//                var smallCar = new Image();
+//                
+//                //图像加载完毕再显示
+//                smallCar.addEventListener('load', eventCarLoaded, false);
+//                smallCar.src = "../img/car.png";
+//                
+//                           
+//                function eventCarLoaded () {
+//                        drawScreen();
+//                }
+//
+//                placeCar(context,smallCar,0,0);
+//                placeCar(context,smallCar,50,50);
+//            }
+//
+//            function placeCar(cxt,obj, posX, posY,width,height) {
+//                if(width && height) {
+//                    cxt.drawImage(obj,posX,posY,width,height);
+//                }else{
+//                    cxt.drawImage(obj,posX,posY);
+//                }
+//            }
+        }
+
+    </script>
+</head>
+<body>
+    <div style="position:absolute; top:50px;left:100px;">
+        <canvas id="canvasOne" width="1000" height="500">
+            Your browser does not support canvas label
+        </canvas>
+    </div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xxx</title>
+    <script type="text/javascript" src="../modernizr-1.6.min.js"></script>
+    <script type="text/javascript">
+        /*
+            drawImage :
+                Imagedata positionX positionY width height
+            drawImage: Image, sx, sy, sw, sh, dx, dy, dw, dh
+                sx,sy 是图片上的坐标点
+                sw,sh 是图片上的宽高
+                
+                dx,dy 画布上的位置
+                dw,dh 画布上实际显示的宽高
+                
+        */
+        window.addEventListener('load', eventWindowLoaded, false);
+        function eventWindowLoaded() {
+            canvasApp();
+        }
+        //判断是否支持canvas
+        function canvasSupport() {
+            return Modernizr.canvas;
+        }
+        
+        //专门执行canvas的
+        function canvasApp() {
+            
+            //初始化
+            var message = "Your message";
+            var fillOrStroke = "fill";
+            
+            if(!canvasSupport()) {
+                return;
+            }else{
+                var theCanvas = document.getElementById("canvasOne");
+                var context = theCanvas.getContext('2d'); 
+            }
+                            
+            drawScreen();
+
+            var tileSheet = new Image();
+            tileSheet.addEventListener('load', eventCarLoaded, false);
+            
+            tileSheet.src = "../img/car.png";
+
+            
+            var x = 50;
+            var y = 50;
+            
+            function eventCarLoaded() {
+                drawScreen();            
+            }
+            
+            function drawScreen() {
+                //绘制背景
+                context.fillStyle = "#aaa";
+                context.fillRect(0,0,500,500);
+                
+                context.save();
+                context.setTransform(1,0,0,1,0,0);
+                
+                context.translate(x+16,y+16);
+                var angleInRadians = rotation * Math.PI/180;
+                context.rotate(angleInRadians);
+                
+       
+                            
+                var animationFrames = [1,2,3,4,5,6,7,8];
+                var frameIndex = 0;
+                var rotation = 90; 
+                
+                var sourceX = Math.floor(animationFrames[frameIndex] % 8)*32;
+                var sourceY = Math.floor(animationFrames[frameIndex] / 8)*32;
+                
+                context.drawImage(tileSheet,sourceX,sourceY, 32,32,-16,-16,32,32);
+                
+                context.restore();
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div style="position:absolute; top:50px;left:100px;">
+        <canvas id="canvasOne" width="1000" height="500">
+            Your browser does not support canvas label
+        </canvas>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xxx</title>
+    <script type="text/javascript" src="../modernizr-1.6.min.js"></script>
+    <script type="text/javascript">
+        window.addEventListener('load', eventWindowLoaded, false);
+        function eventWindowLoaded() {
+            canvasApp();
+        }
+        //判断是否支持canvas
+        function canvasSupport() {
+            return Modernizr.canvas;
+        }
+        
+        //专门执行canvas的
+        function canvasApp() {
+                    
+            if(!canvasSupport()) {
+                return;
+            }else{
+                var theCanvas = document.getElementById("canvasOne");
+                var context = theCanvas.getContext('2d'); 
+            }
+
+            drawScreen();
+            function drawScreen() {
+                //线性渐变 {水平的} 必须是0 
+                //context,createRadialGradient(x1,y1,x2,y2,r1,r2);
+                //圆1 的圆心左边和半径 圆2的远新坐标和半径
+                var gr = context.createRadialGradient(50,50,25,100,100,100);
+                
+                gr.addColorStop(0,'rgb(255,0,0)');
+                gr.addColorStop(0.5,'rgb(0,255,0)');
+                gr.addColorStop(1,'rgb(255,0,0)');
+                
+                context.fillStyle = gr;
+                context.fillRect(0,0,200,200)
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <div style="position:absolute; top:50px;left:100px;">
+        <canvas id="canvasOne" width="500" height="500">
+            Your browser does not support canvas label
+        </canvas>
+    </div>
+</body>
+</html>

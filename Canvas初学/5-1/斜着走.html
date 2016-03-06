@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>直线运动</title>
+    <script type="text/javascript" src="../modernizr-1.6.min.js"></script>
+    <script type="text/javascript">
+        window.addEventListener('load', eventWindowLoaded, false);
+        
+        function canvasSupport() {
+            return Modernizr.canvas;
+        }
+        
+        function eventWindowLoaded() {
+            canvasApp();
+        }
+        
+        function canvasApp() {
+
+            //如果不支持canvas 
+            if(!canvasSupport()) {
+                return;
+            }else {
+                var theCanvas = document.getElementById('canvasOne');
+                context = theCanvas.getContext('2d');
+            }
+            
+            function drawScreen() {
+                context.fillStyle = "#ffa";
+                context.fillRect(0,0,theCanvas.width, theCanvas.height);
+                
+                context.strokeStyle = "#000";
+                context.strokeRect(5,5,theCanvas.width-10,theCanvas.height-10);
+                
+                //创建一个球：
+                if(moves >0) {
+                    moves --;
+                    ball.x += xunits;
+                    ball.y += yunits;
+                }
+                
+//               points.push({x:ball.x,y:ball.y});
+//                for(var i = 0; i< points.length; i++) {
+//                    context.save();
+//                    context.fillStyle = "#9dd";
+//                    context.fillRect(points[i].x,points[i],5,5);
+//                    context.restore();
+//                  
+//                }
+                
+                context.fillStyle = "#000";
+                context.beginPath();
+                context.arc(ball.x,ball.y,15,0,Math.PI*2,false);
+                context.closePath();
+                context.fill();
+            }
+            var speed = 5;
+            //坐标 起点 & 终点
+            var p1 = {x:20, y:250};
+            var p2 = {x:480, y:350};
+            
+            //两坐标之间的距离差
+            var dx = p2.x-p1.x;
+            var dy = p2.y-p1.y;
+            
+            var distance = Math.sqrt(dx*dx + dy*dy);
+            
+            //走的步数  需要走几步
+            var moves = distance/speed;
+            
+            //计算出来每次的 x y 轴必须走多长【使得看起来是斜着走的】
+            var xunits = (p2.x-p1.x)/moves;
+            var yunits = (p2.y-p1.y)/moves;
+            
+            var ball = {x:p1.x, y: p1.y};
+//            var points = new Array();
+            
+            setInterval(drawScreen,30);
+            
+        }
+    </script>
+</head>
+<body>
+     <div style="position:absolute; top:50px;left:100px;">
+        <canvas id="canvasOne" width="1000" height="500">
+            Your browser does not support canvas label
+        </canvas>
+    </div>
+</body>
+</html>
