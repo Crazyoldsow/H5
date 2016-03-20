@@ -105,7 +105,29 @@
     6. 调整字间距
         * 一般情况下不支持使用这个方法
         * 具体情况具体对待
-     
+##### line-height的问题：
+
+1. line-height: 用途是让我们的文本可以在父级元素中居中显示
+
+    1. line-height 的定义：
+        * normal 默认设置合理的行间距
+        * number: 这个数字会与当前的字体尺寸进行相乘来设置成行间距
+        * length: 设置成固定的行间距
+        * % : 基于当前字体尺寸的百分比设置行间距
+        * iherit: 从父级元素继承line-height 属性的值
+        
+    2. <font color = "red">布局的时候出现的问题：　字体很大的时候，字体和父级之间有一些空隙</font>
+        * 产生原因：line-height 与font-size 的计算值得差(行距)分成了两半 分别加到了上下
+                空白间距 = line-height – font-size
+        * 解决方法： 给父容器添加line-height:100%; 
+                举个例子： 一个容器的高度： 80px  line-height:60px;
+                    normal：情况下计算出来的上下间距各为6px;
+                    number: 2 上下空白间隙为20px
+                    100%: 没有行间距
+                    inherit: 根据父级的line-height 进行设置
+    3. 使用flex布局的是偶一定要写上各种的兼容模式
+        1. <font color="red">遇到的问题： 安卓4.3的手机下面flex布局会有问题</font>
+            * 解决方法： hack的处理方法： flex布局的时候 width:0 而不是写一个宽度
     
 * <font color = "#F87219" size = "2px"> 参考资料</font>
     * [http://www.html-js.com/article/Mobile-terminal-H5-mobile-terminal-HD-multi-screen-adaptation-scheme%203041](http://www.html-js.com/article/Mobile-terminal-H5-mobile-terminal-HD-multi-screen-adaptation-scheme%203041)
