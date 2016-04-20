@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用JSON 对象传递消息</title>
+</head>
+<body>
+	<button class="btn" id="sayhi">SayHi</button>
+	<button class="btn" id="sendmsg">Send Unknown command</button>
+	<button class="btn" id="stop">Stop Worker</button>
+	<output id="result"></output>
+<script type="text/javascript">
+	function getId(id){
+		return document.getElementById(id);
+	}
+
+	var result = getId("result");
+	var sayHi = getId("sayhi");
+	var sendMsg = getId("sendmsg");
+	var stop = getId("stop");
+
+	var worker = new Worker('worker1.js');
+
+	sayHi.onclick = function(){
+		worker.postMessage({'cmd': 'start', 'msg':'Hi'})
+		worker.onmessage = function(event){
+			alert(event.data)
+		}
+	}
+
+	sendMsg.onclick = function(){
+		worker.postMessage({'cmd':'foobard', 'msg':'?????'})
+	}
+
+	stop.onclick = function(){
+		worker.postMessage({'cmd':'stop', 'msg':'bye'})
+	}
+
+	//接收消息
+	worker.onmessage = function(event){
+		result.innerHTML = event.data;
+	}
+
+
+</script>
+</body>
+</html>

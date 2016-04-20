@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Big for Loop</title>
+</head>
+<body>
+<input type="button" value="加载bigLoop.js"  id="btn">
+<script type="text/javascript" src="
+https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+<script type="text/javascript">
+	var worker = new Worker('bigLoop.js');
+	function getId(id){
+		return document.getElementById(id);
+	}
+
+	var btn  = getId("btn");
+
+	btn.onclick = function(){
+
+		worker.postMessage(100000);
+
+		worker.onmessage = function(event){
+			alert(event.data)
+		}
+		worker.onerror = function(event){
+			alert(event.data)
+		}
+
+	}	
+	function  sayHi(){
+		alert("Hi i am Kara");
+	}
+	sayHi();
+</script>
+</body>
+</html>
