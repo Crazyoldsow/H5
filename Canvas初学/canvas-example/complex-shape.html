@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>画一个复杂的图形</title>
+</head>
+<body>
+	<canvas id="canvas" width="400" height="400">
+		your navigator does not support canvas
+	</canvas>
+
+<script type="text/javascript">
+	var canvas = document.getElementById("canvas");
+
+	var ctx = canvas.getContext("2d");
+
+	ctx.fillStyle = "#eee";
+	ctx.fillRect(0,0,400,400);
+
+	var n = 0;
+	var dx = 150;
+	var dy = 150;
+	var s = 100;
+
+	ctx.beginPath();
+	ctx.fillStyle = "#9dd";
+	ctx.strokeStyle = "#faf";
+	var dig = Math.PI/15*11;
+
+	for(var i=0; i<30; i++){
+		var x = Math.sin(i*dig);
+		var y = Math.cos(i*dig);
+
+		ctx.lineTo(dx+ x*s, dy+y*s);
+	}
+
+	ctx.closePath();
+	ctx.fill();
+	ctx.stroke();
+
+
+</script>
+</body>
+</html>
