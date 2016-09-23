@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+	<title>0.5px line</title>
+<style type="text/css">
+	*{
+		padding:0;
+		margin:0;
+	}
+	.container{
+		width:40%;
+		margin:0 auto;
+	}
+	p{
+		line-height:50px;
+	}
+	.line{
+		width:50%;
+		height:30px;
+		border:1px solid #cc0000;
+	}
+	.scaleline{
+		position:relative;
+		width:50%;
+		height:30px;
+	}
+	.scaleline:after{
+		position: absolute;
+		content:"";
+		top:-50%;
+		left:-50%;
+		bottom:-50%;
+		right:-50%;
+		border:1px solid #cc0000;
+		transform: scale(0.5);
+		-webkit-transform:scale(0.5);
+/*		-webkit-transform-origin:center;
+		transform-origin:center;*/
+
+	}
+</style>
+</head>
+<body>
+	
+	<div class="container">
+		<h3>0.5px border</h3>
+		<p>1px 的border</p>
+		<div class="line"></div>
+		<p>0.5px 的border</p>
+		<div class="scaleline"></div>
+	</div>
+</body>
+</html>
